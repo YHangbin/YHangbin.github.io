@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="软件版本:安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务的 系统版本：Ubuntu16.04Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）显卡驱动：375.26">
+<meta name="description" content="软件版本:   安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。要知道CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务。 系统版本：Ubuntu16.04Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）显卡驱动：375.26">
 <meta name="keywords" content="深度学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程（2018年1月23）">
-<meta property="og:url" content="http://yuhangbin.top/2018/03/12/Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程（2018年1月23）/index.html">
+<meta property="og:title" content="Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程">
+<meta property="og:url" content="http://yuhangbin.top/2018/03/12/2018.1.23_Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程/index.html">
 <meta property="og:site_name" content="YHangbin的博客">
-<meta property="og:description" content="软件版本:安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务的 系统版本：Ubuntu16.04Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）显卡驱动：375.26">
+<meta property="og:description" content="软件版本:   安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。要知道CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务。 系统版本：Ubuntu16.04Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）显卡驱动：375.26">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20170516183753621?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWUhhbmdiaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-03-12T10:56:01.230Z">
+<meta property="og:updated_time" content="2018-03-13T07:03:21.279Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程（2018年1月23）">
-<meta name="twitter:description" content="软件版本:安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务的 系统版本：Ubuntu16.04Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）显卡驱动：375.26">
+<meta name="twitter:title" content="Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程">
+<meta name="twitter:description" content="软件版本:   安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。要知道CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务。 系统版本：Ubuntu16.04Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）显卡驱动：375.26">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20170516183753621?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWUhhbmdiaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
@@ -122,18 +122,28 @@
 
 
 
-  <link rel="canonical" href="http://yuhangbin.top/2018/03/12/Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程（2018年1月23）/"/>
+  <link rel="canonical" href="http://yuhangbin.top/2018/03/12/2018.1.23_Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程/"/>
 
 
 
 
 
-  <title>Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程（2018年1月23） | YHangbin的博客</title>
+  <title>Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程 | YHangbin的博客</title>
   
 
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2f2c8c1b3d4c30d05d2944c225368454";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -193,12 +203,42 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -235,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yuhangbin.top/2018/03/12/Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程（2018年1月23）/">
+    <link itemprop="mainEntityOfPage" href="http://yuhangbin.top/2018/03/12/2018.1.23_Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YHangbin">
@@ -252,10 +292,15 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程（2018年1月23）</h1>
+          <h1 class="post-title" itemprop="name headline">Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程</h1>
         
 
         <div class="post-meta">
+			
+				<i class="fa fa-thumb-tack"></i>
+				<font color=7D26CD>置顶</font>
+				<span class="post-meta-divider">|</span>
+			
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -304,6 +349,17 @@
 
           
           
+             <span id="/2018/03/12/2018.1.23_Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程/" class="leancloud_visitors" data-flag-title="Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -324,17 +380,9 @@
       
 
       
-        <h2 id="软件版本"><a href="#软件版本" class="headerlink" title="软件版本:"></a><strong>软件版本:</strong></h2><p>安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。<br>CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务的</p>
+        <h1 id="软件版本"><a href="#软件版本" class="headerlink" title="软件版本:"></a>软件版本:</h1><p>   安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。要知道<br>CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务。</p>
 <p>系统版本：Ubuntu16.04<br>Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）<br>显卡驱动：375.26           （试过384.111和测试时提示与CUDA8.0版本不兼容）<br>Cuda 8.0<br>Cudnn v6（tensorflow1.4.1 不支持V7）<br>下载地址：<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-download</a><br>Opencv-3.4.0<br>Matlab 2016b<br>Caffe  (2018年1月23 github最新版本)<br>tensorflow 1.4.1 版本</p>
-<hr>
-<ul>
-<li><strong>0、首先安装Anacnonda</strong></li>
-</ul>
-<hr>
-<ul>
-<li><strong>1、安装NVIDIA驱动&amp;&amp;CUDA</strong></li>
-</ul>
-<hr>
+<h1 id="0、首先安装PYthon-Anacnonda"><a href="#0、首先安装PYthon-Anacnonda" class="headerlink" title="0、首先安装PYthon[Anacnonda]"></a>0、首先安装PYthon[Anacnonda]</h1><h1 id="1、安装NVIDIA驱动-amp-amp-CUDA"><a href="#1、安装NVIDIA驱动-amp-amp-CUDA" class="headerlink" title="1、安装NVIDIA驱动&amp;&amp;CUDA"></a>1、安装NVIDIA驱动&amp;&amp;CUDA</h1><hr>
 <p>安装CUDA时候，选择安装合适版本的NVIDIA驱动。<br>注意：需要在安装驱动前禁用X服务</p>
 <pre><code>sudo service lightdm stop
 </code></pre><p>在<a href="https://developer.nvidia.com/cuda-downloads，根据自己的系统下载对应的runfile文件。" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-downloads，根据自己的系统下载对应的runfile文件。</a><br>下载后运行<code>sudo ./cuda_8.0.61_375.26_linux.run</code><br>1、运行后，首先是协议。按<code>空格</code>到底后，输入accept</p>
@@ -400,15 +448,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/12/测试文章/" rel="next" title="格式测试文件">
-                <i class="fa fa-chevron-left"></i> 格式测试文件
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/13/2018.3.13_hello-world/" rel="prev" title="新博客发布步骤">
+                新博客发布步骤 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -436,6 +484,11 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDc4NS8xMTMyMg=="></div>
+    </div>
 
   
 
@@ -485,7 +538,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -495,10 +548,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -506,10 +559,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">2</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
@@ -540,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件版本"><span class="nav-number">1.</span> <span class="nav-text">软件版本:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改后为"><span class="nav-number"></span> <span class="nav-text">修改后为</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件版本"><span class="nav-number">1.</span> <span class="nav-text">软件版本:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0、首先安装PYthon-Anacnonda"><span class="nav-number">2.</span> <span class="nav-text">0、首先安装PYthon[Anacnonda]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1、安装NVIDIA驱动-amp-amp-CUDA"><span class="nav-number">3.</span> <span class="nav-text">1、安装NVIDIA驱动&amp;&amp;CUDA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改后为"><span class="nav-number">4.</span> <span class="nav-text">修改后为</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -720,6 +773,17 @@
 
 
   
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
 
 
 
@@ -739,6 +803,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("JNvLDe0xGUzmE3Lxz1JNDrPj-gzGzoHsz", "3yWz0dWm9n0aTdbEY99X11ya");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
