@@ -88,7 +88,7 @@
 <meta property="og:description" content="软件版本:   安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。要知道CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务。 系统版本：Ubuntu16.04Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）显卡驱动：375.26">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20170516183753621?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWUhhbmdiaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-03-13T07:03:21.279Z">
+<meta property="og:updated_time" content="2018-03-13T08:12:08.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu16.04下安装Cuda8.0+Caffe+TensorFlow-gpu+Pycharm过程">
 <meta name="twitter:description" content="软件版本:   安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。要知道CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务。 系统版本：Ubuntu16.04Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）显卡驱动：375.26">
@@ -382,7 +382,7 @@
       
         <h1 id="软件版本"><a href="#软件版本" class="headerlink" title="软件版本:"></a>软件版本:</h1><p>   安装包之间的支持关系要理清，支持关系弄好后安装的过程就会少很多麻烦。要知道<br>CUDA 、Cudnn 、Anaconda 、Opencv 都是为Caffe 和Tensorflow服务。</p>
 <p>系统版本：Ubuntu16.04<br>Anaconda [Python2.7]    （版本忘了，推荐最新的，老版本的Gcc版本太低，后面编译caffe会出现错误,需要升级GCC）<br>显卡驱动：375.26           （试过384.111和测试时提示与CUDA8.0版本不兼容）<br>Cuda 8.0<br>Cudnn v6（tensorflow1.4.1 不支持V7）<br>下载地址：<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-download</a><br>Opencv-3.4.0<br>Matlab 2016b<br>Caffe  (2018年1月23 github最新版本)<br>tensorflow 1.4.1 版本</p>
-<h1 id="0、首先安装PYthon-Anacnonda"><a href="#0、首先安装PYthon-Anacnonda" class="headerlink" title="0、首先安装PYthon[Anacnonda]"></a>0、首先安装PYthon[Anacnonda]</h1><h1 id="1、安装NVIDIA驱动-amp-amp-CUDA"><a href="#1、安装NVIDIA驱动-amp-amp-CUDA" class="headerlink" title="1、安装NVIDIA驱动&amp;&amp;CUDA"></a>1、安装NVIDIA驱动&amp;&amp;CUDA</h1><hr>
+<h1 id="首先安装PYthon-Anacnonda"><a href="#首先安装PYthon-Anacnonda" class="headerlink" title="首先安装PYthon[Anacnonda]"></a>首先安装PYthon[Anacnonda]</h1><h1 id="安装NVIDIA驱动-amp-amp-CUDA"><a href="#安装NVIDIA驱动-amp-amp-CUDA" class="headerlink" title="安装NVIDIA驱动&amp;&amp;CUDA"></a>安装NVIDIA驱动&amp;&amp;CUDA</h1><hr>
 <p>安装CUDA时候，选择安装合适版本的NVIDIA驱动。<br>注意：需要在安装驱动前禁用X服务</p>
 <pre><code>sudo service lightdm stop
 </code></pre><p>在<a href="https://developer.nvidia.com/cuda-downloads，根据自己的系统下载对应的runfile文件。" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-downloads，根据自己的系统下载对应的runfile文件。</a><br>下载后运行<code>sudo ./cuda_8.0.61_375.26_linux.run</code><br>1、运行后，首先是协议。按<code>空格</code>到底后，输入accept</p>
@@ -538,7 +538,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -609,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件版本"><span class="nav-number">1.</span> <span class="nav-text">软件版本:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0、首先安装PYthon-Anacnonda"><span class="nav-number">2.</span> <span class="nav-text">0、首先安装PYthon[Anacnonda]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1、安装NVIDIA驱动-amp-amp-CUDA"><span class="nav-number">3.</span> <span class="nav-text">1、安装NVIDIA驱动&amp;&amp;CUDA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改后为"><span class="nav-number">4.</span> <span class="nav-text">修改后为</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件版本"><span class="nav-number">1.</span> <span class="nav-text">软件版本:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#首先安装PYthon-Anacnonda"><span class="nav-number">2.</span> <span class="nav-text">首先安装PYthon[Anacnonda]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装NVIDIA驱动-amp-amp-CUDA"><span class="nav-number">3.</span> <span class="nav-text">安装NVIDIA驱动&amp;&amp;CUDA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改后为"><span class="nav-number">4.</span> <span class="nav-text">修改后为</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
             
 
           </div>
