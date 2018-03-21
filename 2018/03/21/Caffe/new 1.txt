@@ -1,0 +1,70 @@
+layer{
+	name: "minist"
+	type: "Data"
+	transform_parm{
+		scaale: 0.00390625
+	}
+	data_parm{
+		spurce: "minist_train_lmdb"
+		backend: "LMDB"
+		batch_size: 64
+	}
+	top: "data"
+	top: "label"
+}
+layer{
+	name: "conv1"
+	type: "Convolution"
+	parm: {lr_mult: 1}
+	parm: {lr_mult: 2}
+	convolution_parm{
+		num_output: 20
+		kernel_size: 5
+		stride: 1
+		weight_filler{
+			type: "xavier"
+		}
+		bias_filler{
+			type: "constant"
+		}
+	}
+	bottom: "data"
+	top: "conv1"
+}
+
+layer{
+	name: "poll1"
+	type: "Polling"
+	polling_parm{
+		kernel_size: 2
+		stride: 2
+		poll: Max
+	}
+	bottom: "conv1"
+	top: "poll1"
+}
+
+layer{
+	name: ""
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

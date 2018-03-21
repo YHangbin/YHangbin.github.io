@@ -86,14 +86,12 @@
 <meta property="og:site_name" content="YHangbin的博客">
 <meta property="og:description" content="LeNet：MNIST分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 编写数据层数据层定义为： layer{ name: &amp;quot;minist&amp;quot; type: &amp;quot;Data&amp;quot; transf">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/hello.jpg">
-<meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/1.jpg">
 <meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/1.png">
-<meta property="og:updated_time" content="2018-03-21T13:40:35.625Z">
+<meta property="og:updated_time" content="2018-03-21T14:04:04.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Caffe学习">
 <meta name="twitter:description" content="LeNet：MNIST分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 编写数据层数据层定义为： layer{ name: &amp;quot;minist&amp;quot; type: &amp;quot;Data&amp;quot; transf">
-<meta name="twitter:image" content="http://yuhangbin.top/2018/03/21/Caffe/hello.jpg">
+<meta name="twitter:image" content="http://yuhangbin.top/2018/03/21/Caffe/1.png">
 
 
 
@@ -362,40 +360,50 @@
 name: &quot;minist&quot;
 type: &quot;Data&quot;
 transform_parm{
-    scaale: 0.00390625             #缩放输入像素使其位于[0,1)范围内 1/256=0.00390625
+    scaale: 0.00390625              #缩放输入像素使其位于[0,1)范围内 1/256=0.00390625
 }
 data_parm{
-    spurce: &quot;minist_train_lmdb&quot;    #从给定的lmdb源读取数据
+    spurce: &quot;minist_train_lmdb&quot;     #从给定的lmdb源读取数据
     backend: &quot;LMDB&quot;
-    batch_size: 64                   #批处理数量值为64 数值大小与硬件性能挂钩
+    batch_size: 64                    #批处理数量值为64 数值大小与硬件性能挂钩
 }
-top: &quot;data&quot;                        #该层的输出，有两个部分，一部分是标签，一部分是数据值
+top: &quot;data&quot;                         #该层的输出，有两个部分，一部分是标签，一部分是数据值
 top: &quot;label&quot;
 }
-</code></pre><h3 id="1、编写卷积层"><a href="#1、编写卷积层" class="headerlink" title="1、编写卷积层"></a>1、编写卷积层</h3><p>定义第一个卷积层：</p>
+</code></pre><h2 id="编写卷积层"><a href="#编写卷积层" class="headerlink" title="编写卷积层"></a>编写卷积层</h2><p>定义第一个卷积层：</p>
 <pre><code>layer{
 name: &quot;conv1&quot;
 type: &quot;Convolution&quot;
-parm: {lr_mult: 1}
+parm: {lr_mult: 1}                  #学习率 权重学习率和偏置学习率，**通常偏置的学习率是权重学习率的2倍**
 parm: {lr_mult: 2}
 convolution_parm{
-    num_output: 20
-    kernel_size: 5
+    num_output: 20                    #产生20个通道的输出
+    kernel_size: 5                    #卷积核大小为5 步长为1 也就是卷积每次移动的单位
     stride: 1
     weight_filler{
-        type: &quot;xavier&quot;
+        type: &quot;xavier&quot;                #参数初始化的类型 不太明白[**基于输入输出神经元数目，总定确定初始化规模的算法**]
     }
     bias_filler{
-        type: &quot;constant&quot;
+        type: &quot;constant&quot;            #初始化偏置的数值为0
     }
 }
-bottom: &quot;data&quot;
-top: &quot;conv1&quot;
+bottom: &quot;data&quot;                        #输入
+top: &quot;conv1&quot;                        #输出
 }
-</code></pre><p><img src="/2018/03/21/Caffe/hello.jpg" alt="pir"></p>
-<p><img src="/2018/03/21/Caffe/1.jpg" alt="图片2"></p>
-<p><img src="/2018/03/21/Caffe/1.png" alt="图片2"></p>
-
+</code></pre><p><img src="/2018/03/21/Caffe/1.png" alt="图片1"></p>
+<h2 id="编写池化层"><a href="#编写池化层" class="headerlink" title="编写池化层"></a>编写池化层</h2><p>相比卷积层，池化层的定义比较简单</p>
+<pre><code>layer{
+name: &quot;poll1&quot;
+type: &quot;Polling&quot;
+polling_parm{
+    kernel_size: 2
+    stride: 2                        #步长设置为2，因此相邻池区之间不存在重叠
+    poll: Max
+}
+bottom: &quot;conv1&quot;
+top: &quot;poll1&quot;
+</code></pre><p>}</p>
+<h2 id="之后，类比以上可以写出另外一个卷积层和池化层的组合"><a href="#之后，类比以上可以写出另外一个卷积层和池化层的组合" class="headerlink" title="之后，类比以上可以写出另外一个卷积层和池化层的组合"></a>之后，类比以上可以写出另外一个卷积层和池化层的组合</h2><h2 id="编写全连接层"><a href="#编写全连接层" class="headerlink" title="编写全连接层"></a>编写全连接层</h2>
       
     </div>
     
@@ -580,7 +588,7 @@ top: &quot;conv1&quot;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeNet：MNIST分类模型"><span class="nav-number">1.</span> <span class="nav-text">LeNet：MNIST分类模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写数据层"><span class="nav-number">1.1.</span> <span class="nav-text">编写数据层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、编写卷积层"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、编写卷积层</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeNet：MNIST分类模型"><span class="nav-number">1.</span> <span class="nav-text">LeNet：MNIST分类模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写数据层"><span class="nav-number">1.1.</span> <span class="nav-text">编写数据层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写卷积层"><span class="nav-number">1.2.</span> <span class="nav-text">编写卷积层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写池化层"><span class="nav-number">1.3.</span> <span class="nav-text">编写池化层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#之后，类比以上可以写出另外一个卷积层和池化层的组合"><span class="nav-number">1.4.</span> <span class="nav-text">之后，类比以上可以写出另外一个卷积层和池化层的组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写全连接层"><span class="nav-number">1.5.</span> <span class="nav-text">编写全连接层</span></a></li></ol></li></ol></div>
             
 
           </div>
