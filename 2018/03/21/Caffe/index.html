@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="#LeNet：MNIST分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. ##编写数据层数据层定义为： layer{ name: &amp;quot;minist&amp;quot; type: &amp;quot;Data&amp;quot; tra">
+<meta name="description" content="LeNet：MNIST分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 编写数据层数据层定义为： layer{ name: &amp;quot;minist&amp;quot; type: &amp;quot;Data&amp;quot; transf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Caffe学习">
-<meta property="og:url" content="http://yuhangbin.top/2018/03/21/Caffe学习/index.html">
+<meta property="og:url" content="http://yuhangbin.top/2018/03/21/Caffe/index.html">
 <meta property="og:site_name" content="YHangbin的博客">
-<meta property="og:description" content="#LeNet：MNIST分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. ##编写数据层数据层定义为： layer{ name: &amp;quot;minist&amp;quot; type: &amp;quot;Data&amp;quot; tra">
+<meta property="og:description" content="LeNet：MNIST分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 编写数据层数据层定义为： layer{ name: &amp;quot;minist&amp;quot; type: &amp;quot;Data&amp;quot; transf">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe学习/Caffe/hello.jpg">
-<meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe学习/Caffe/1.jpg">
-<meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe学习/Caffe/1.png">
-<meta property="og:updated_time" content="2018-03-21T13:13:15.292Z">
+<meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/hello.jpg">
+<meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/1.jpg">
+<meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/1.png">
+<meta property="og:updated_time" content="2018-03-21T13:40:35.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Caffe学习">
-<meta name="twitter:description" content="#LeNet：MNIST分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. ##编写数据层数据层定义为： layer{ name: &amp;quot;minist&amp;quot; type: &amp;quot;Data&amp;quot; tra">
-<meta name="twitter:image" content="http://yuhangbin.top/2018/03/21/Caffe学习/Caffe/hello.jpg">
+<meta name="twitter:description" content="LeNet：MNIST分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 编写数据层数据层定义为： layer{ name: &amp;quot;minist&amp;quot; type: &amp;quot;Data&amp;quot; transf">
+<meta name="twitter:image" content="http://yuhangbin.top/2018/03/21/Caffe/hello.jpg">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yuhangbin.top/2018/03/21/Caffe学习/"/>
+  <link rel="canonical" href="http://yuhangbin.top/2018/03/21/Caffe/"/>
 
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yuhangbin.top/2018/03/21/Caffe学习/">
+    <link itemprop="mainEntityOfPage" href="http://yuhangbin.top/2018/03/21/Caffe/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YHangbin">
@@ -324,7 +324,7 @@
 
           
           
-             <span id="/2018/03/21/Caffe学习/" class="leancloud_visitors" data-flag-title="Caffe学习">
+             <span id="/2018/03/21/Caffe/" class="leancloud_visitors" data-flag-title="Caffe学习">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -355,9 +355,9 @@
       
 
       
-        <p>#LeNet：MNIST分类模型<br>通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。<br>网络结构定义在路径：</p>
+        <h1 id="LeNet：MNIST分类模型"><a href="#LeNet：MNIST分类模型" class="headerlink" title="LeNet：MNIST分类模型"></a>LeNet：MNIST分类模型</h1><p>通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。<br>网络结构定义在路径：</p>
 <pre><code>$CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt.
-</code></pre><p>##编写数据层<br>数据层定义为：</p>
+</code></pre><h2 id="编写数据层"><a href="#编写数据层" class="headerlink" title="编写数据层"></a>编写数据层</h2><p>数据层定义为：</p>
 <pre><code>layer{
 name: &quot;minist&quot;
 type: &quot;Data&quot;
@@ -372,7 +372,7 @@ data_parm{
 top: &quot;data&quot;                        #该层的输出，有两个部分，一部分是标签，一部分是数据值
 top: &quot;label&quot;
 }
-</code></pre><p>##编写卷积层<br>定义第一个卷积层：</p>
+</code></pre><h3 id="1、编写卷积层"><a href="#1、编写卷积层" class="headerlink" title="1、编写卷积层"></a>1、编写卷积层</h3><p>定义第一个卷积层：</p>
 <pre><code>layer{
 name: &quot;conv1&quot;
 type: &quot;Convolution&quot;
@@ -392,9 +392,9 @@ convolution_parm{
 bottom: &quot;data&quot;
 top: &quot;conv1&quot;
 }
-</code></pre><p><img src="/2018/03/21/Caffe学习/Caffe/hello.jpg" alt="图片1"></p>
-<p><img src="/2018/03/21/Caffe学习/Caffe/1.jpg" alt="图片2"></p>
-<p><img src="/2018/03/21/Caffe学习/Caffe/1.png" alt="图片2"></p>
+</code></pre><p><img src="/2018/03/21/Caffe/hello.jpg" alt="pir"></p>
+<p><img src="/2018/03/21/Caffe/1.jpg" alt="图片2"></p>
+<p><img src="/2018/03/21/Caffe/1.png" alt="图片2"></p>
 
       
     </div>
@@ -484,8 +484,17 @@ top: &quot;conv1&quot;
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -561,6 +570,22 @@ top: &quot;conv1&quot;
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeNet：MNIST分类模型"><span class="nav-number">1.</span> <span class="nav-text">LeNet：MNIST分类模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写数据层"><span class="nav-number">1.1.</span> <span class="nav-text">编写数据层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、编写卷积层"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、编写卷积层</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
