@@ -87,7 +87,8 @@
 <meta property="og:description" content="LeNet：MNIST 分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径：    $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 数据层数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/1.png">
-<meta property="og:updated_time" content="2018-03-22T03:08:27.314Z">
+<meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/2.jpg">
+<meta property="og:updated_time" content="2018-03-22T09:28:44.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Caffe 学习">
 <meta name="twitter:description" content="LeNet：MNIST 分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径：    $CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 数据层数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如">
@@ -355,93 +356,137 @@
       
         <h1 id="LeNet：MNIST-分类模型"><a href="#LeNet：MNIST-分类模型" class="headerlink" title="LeNet：MNIST 分类模型"></a>LeNet：MNIST 分类模型</h1><p>通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。<br>网络结构定义在路径：<br>    <code>$CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt.</code></p>
 <h2 id="数据层"><a href="#数据层" class="headerlink" title="数据层"></a>数据层</h2><p>数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如减去均值, 放大缩小, 裁剪和镜像等），也在这一层设置参数实现。数据来源可以来自高效的数据库（如 LevelDB 和 LMDB ），也可以直接来自于内存。如果不是很注重效率的话，数据也可来自磁盘的 HDF5 文件和图片格式文件。数据层定义为：</p>
-<pre><code>layer{
-name: &quot;minist&quot;
-type: &quot;Data&quot;
-transform_parm{
+<pre><code>layer {
+  name: &quot;minist&quot;
+  type: &quot;Data&quot;
+  transform_parm{
     scaale: 0.00390625              #缩放输入像素使其位于 [0,1) 范围内 1/256=0.00390625
-}
-data_parm{
-    source: &quot;/minist_train_lmdb&quot;    #从给定的 LMDB 存储位置读取数据，还可以设置为 LevelDB
+  }
+  data_parm{
+    source: &quot;minist_train_lmdb&quot;     #从给定的 LMDB 存储位置读取数据，还可以设置为 LevelDB
     backend: &quot;LMDB&quot;
     batch_size: 64                  #每次处理数量值为 64 
-}
-top: &quot;data&quot;                         #该层的输出，有两个部分，一部分是标签，一部分是数据值
-top: &quot;label&quot;
+  }
+  top: &quot;data&quot;                       #该层的输出，有两个部分，一部分是标签，一部分是数据值
+  top: &quot;label&quot;
 }
 </code></pre><p>要根据数据来源的不同，对数据层参数进行不同的设置：<br>1、来自数据库，如 LMDB 、LevelDB<br>2、来自内存<br>3、来自 HDF5<br>4、来自图片<br>5、数据来源于Windows，如 txt 文件<br>数据层中其他常用参数的定义：</p>
 <pre><code>include {
-phase: TRAIN                         #用include来指定该层是属于训练阶段的还是测试阶段的，不指定表示训练和测试阶段都使用
+  phase: TRAIN                         #用include来指定该层是属于训练阶段的还是测试阶段的，不指定表示训练和测试阶段都使用
 }
 transform_param {
-mean_file: &quot;/mean.binaryproto&quot;       2018/3/22 上午 10:39:25 2018/3/22 上午 10:39:35 #使用一个配置文件进行均值操作
-mirror： 1                           #1 表示开启镜像，也可以使用 true 或者 false 表示
-corp_size: 227                       #训练阶段随意裁剪为 227X227 的数据快，测试阶段从中间裁剪
+  mean_file: &quot;/mean.binaryproto&quot;       #使用一个配置文件进行均值操作
+  mirror： 1                           #使用镜像用 1 表示，也可以使用 true 或者 false 表示                          
+  corp_size: 227                       #训练阶段随意裁剪为 227X227 的数据快，测试阶段从中间裁剪       
 }
 </code></pre><p>参考：<a href="http://blog.csdn.net/liuweizj12/article/details/52152911" title="深度学习caffe平台--train_val.prototxt文件中数据层及参数详解" target="_blank" rel="noopener">http://blog.csdn.net/liuweizj12/article/details/52152911</a></p>
 <h2 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h2><p>定义第一个卷积层：</p>
-<pre><code>layer{
-name: &quot;conv1&quot;
-type: &quot;Convolution&quot;
-parm: {lr_mult: 1}                  #学习率 权重学习率和偏置学习率，通常偏置的学习率是权重学习率的2倍 
-parm: {lr_mult: 2}
-convolution_parm{
-    num_output: 20                  #产生 20 个通道的输出
-    kernel_size: 5                  #卷积核大小为 5 步长为 1 也就是卷积窗每次移动的单位
-    stride: 1
-    weight_filler{
-        type: &quot;xavier&quot;              #参数初始化的类型 不太明白[**基于输入输出神经元数目，总定确定初始化规模的算法**]
-    }
-    bias_filler{
-        type: &quot;constant&quot;            #初始化偏置的数值为 0
-    }
-}
-bottom: &quot;data&quot;                      #输入
-top: &quot;conv1&quot;                        #输出
-}
-</code></pre><p><img src="/2018/03/21/Caffe/1.png" alt="图片1"></p>
-<h2 id="编写池化层"><a href="#编写池化层" class="headerlink" title="编写池化层"></a>编写池化层</h2><p>相比卷积层，池化层的定义比较简单</p>
-<pre><code>layer{
-name: &quot;poll1&quot;
-type: &quot;Polling&quot;
-polling_parm{
-    kernel_size: 2
-    stride: 2                       #步长设置为 2 ，因此相邻池区之间不存在重叠
-    poll: Max
-}
-bottom: &quot;conv1&quot;
-top: &quot;poll1&quot;
-</code></pre><p>}</p>
-<h2 id="之后，类比以上可以写出另外一个卷积层和池化层的组合"><a href="#之后，类比以上可以写出另外一个卷积层和池化层的组合" class="headerlink" title="之后，类比以上可以写出另外一个卷积层和池化层的组合"></a>之后，类比以上可以写出另外一个卷积层和池化层的组合</h2><h2 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h2><p>参数和卷积的参数很类似</p>
-<pre><code>layer{
-name: &quot;ip1&quot;
-type: &quot;InnerProduct&quot;
-parm {
+<pre><code>layer {
+  name: &quot;conv1&quot;
+  type: &quot;Convolution&quot;
+  parm {                             #学习率 权重学习率和偏置学习率，通常偏置的学习率是权重学习率的2倍 
     lr_mult: 1
-}
-parm {
+  }
+  parm {
     lr_mult: 2
+  }
+  convolution_parm {
+    num_output: 20                   #产生 20 个通道的输出
+    kernel_size: 5                   #卷积核大小为 5 步长为 1 也就是卷积窗每次移动的单位
+    stride: 1
+    weight_filler {
+      type: &quot;xavier&quot;                 #参数初始化的类型 不太明白[**基于输入输出神经元数目，总定确定初始化规模的算法**]
+    }
+    bias_filler {
+      type: &quot;constant&quot;               #初始化偏置的数值为 0
+    }
+  }
+  bottom: &quot;data&quot;                     #输出
+  top: &quot;conv1&quot;                       #输入
 }
-inner_product_parm{
+</code></pre><p><img src="/2018/03/21/Caffe/1.png" alt="图片1">  </p>
+<h2 id="编写池化层"><a href="#编写池化层" class="headerlink" title="编写池化层"></a>编写池化层</h2><p>相比卷积层，池化层的定义比较简单</p>
+<pre><code>layer {
+  name: &quot;poll1&quot;
+  type: &quot;Polling&quot;
+  polling_parm {
+    kernel_size: 2
+    stride: 2                        #步长设置为 2 ，因此相邻池区之间不存在重叠
+    poll: MAX
+    }
+  bottom: &quot;conv1&quot;
+  top: &quot;poll1&quot;
+}
+</code></pre><h2 id="卷积层2-池化层2"><a href="#卷积层2-池化层2" class="headerlink" title="卷积层2 + 池化层2"></a>卷积层2 + 池化层2</h2><p>类比上面结构，编写 conv1 + poll2</p>
+<h2 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h2><p>全连接层参数和卷积的参数很类似</p>
+<pre><code>layer {
+  name: &quot;ip1&quot;
+  type: &quot;InnerProduct&quot;
+  parm {
+    lr_mult: 1
+  }
+  parm {
+    lr_mult: 2
+  }
+  inner_product_parm {
     num_output: 500
-    weight_filler{
-        type: &quot;xavier&quot;
+    weight_filler {
+      type: &quot;xavier&quot;
     }
-    bias_filler{
-        type: &quot;constant&quot;
+    bias_filler {
+      type: &quot;constant&quot;
     }
-}
-bottom: &quot;poll2&quot;
-top: &quot;ip1&quot;
+  }
+  bottom: &quot;poll2&quot;
+  top: &quot;ip1&quot;
 }
 </code></pre><h2 id="激活层"><a href="#激活层" class="headerlink" title="激活层"></a>激活层</h2><p>这里使用的是 ReLu 层。因为 ReLu 是逐元素进行计算的，不改变数据尺度，因此设置为输入输出是相同名字，从而节约内存</p>
 <pre><code>layer{
-      name: &quot;relu1&quot;
-      type: &quot;ReLU&quot;
-      bottom: &quot;ip1&quot;
-      top: &quot;ip1&quot;
+    name: &quot;relu1&quot;
+    type: &quot;ReLU&quot;
+    bottom: &quot;ip1&quot;
+    top: &quot;ip1&quot;
 }
-</code></pre>
+</code></pre><h2 id="另一个全连接层"><a href="#另一个全连接层" class="headerlink" title="另一个全连接层"></a>另一个全连接层</h2><pre><code>layer {
+  name: &quot;ip2&quot;
+  type: &quot;InnerProduct&quot;
+  parm {
+    lr_mult: 1
+  }
+  parm {
+    lr_mult: 2
+  }
+  inner_product_parm {
+    num_output: 10                #最后的输出分类数目 因为数字只有 10 个所以这里是 10 类
+    weight_filler {
+      type: &quot;xavier&quot;
+    }
+    bias_filler {
+      type: &quot;constant&quot;
+    }
+  }
+  bottom: &quot;ip1&quot;
+  top: &quot;ip2&quot;
+}
+</code></pre><h2 id="损失层"><a href="#损失层" class="headerlink" title="损失层"></a>损失层</h2><p>该层没有输出，只是计算损失函数值，在反向传播时候进行回传</p>
+<pre><code>layer {
+  name: &quot;loss&quot;
+  type: &quot;SoftmaxWithLoss&quot;       #分类损失，计算损失进行回传
+  bottom: &quot;ip2&quot;
+  bottom: &quot;label&quot;
+}
+</code></pre><h2 id="计算精度"><a href="#计算精度" class="headerlink" title="计算精度"></a>计算精度</h2><pre><code>layer {
+  name: &quot;accuracy&quot;
+  type: &quot;Accuracy&quot;
+  bottom: &quot;ip2&quot;
+  bottom: &quot;label&quot;
+  top: &quot;accuracy&quot;
+  include {
+    phase: TEST
+  }
+}
+</code></pre><p>网络整体结构<br><img src="/2018/03/21/Caffe/2.jpg" alt="图片2">  </p>
+
       
     </div>
     
@@ -626,7 +671,7 @@ top: &quot;ip1&quot;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeNet：MNIST-分类模型"><span class="nav-number">1.</span> <span class="nav-text">LeNet：MNIST 分类模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据层"><span class="nav-number">1.1.</span> <span class="nav-text">数据层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积层"><span class="nav-number">1.2.</span> <span class="nav-text">卷积层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写池化层"><span class="nav-number">1.3.</span> <span class="nav-text">编写池化层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#之后，类比以上可以写出另外一个卷积层和池化层的组合"><span class="nav-number">1.4.</span> <span class="nav-text">之后，类比以上可以写出另外一个卷积层和池化层的组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全连接层"><span class="nav-number">1.5.</span> <span class="nav-text">全连接层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活层"><span class="nav-number">1.6.</span> <span class="nav-text">激活层</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeNet：MNIST-分类模型"><span class="nav-number">1.</span> <span class="nav-text">LeNet：MNIST 分类模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据层"><span class="nav-number">1.1.</span> <span class="nav-text">数据层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积层"><span class="nav-number">1.2.</span> <span class="nav-text">卷积层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写池化层"><span class="nav-number">1.3.</span> <span class="nav-text">编写池化层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积层2-池化层2"><span class="nav-number">1.4.</span> <span class="nav-text">卷积层2 + 池化层2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全连接层"><span class="nav-number">1.5.</span> <span class="nav-text">全连接层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活层"><span class="nav-number">1.6.</span> <span class="nav-text">激活层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#另一个全连接层"><span class="nav-number">1.7.</span> <span class="nav-text">另一个全连接层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失层"><span class="nav-number">1.8.</span> <span class="nav-text">损失层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算精度"><span class="nav-number">1.9.</span> <span class="nav-text">计算精度</span></a></li></ol></li></ol></div>
             
 
           </div>
