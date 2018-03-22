@@ -1,3 +1,5 @@
+#数据层
+
 layer {
   name: "minist"
   type: "Data"
@@ -19,6 +21,8 @@ include {
 }
 transform_param {
   mean_file: "/mean.binaryproto"
+  mirror： 1                           
+  corp_size: 227       
 }
 
 
