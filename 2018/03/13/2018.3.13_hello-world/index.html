@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="YHangbin的博客">
 <meta property="og:description" content="原生hexo并不支持数学公式，需要安装插件 mathJax。mathJax 是一款运行于浏览器中的开源数学符号渲染引擎，使用 mathJax 可以方便的在浏览器中嵌入数学公式。mathJax 使用网络字体产生高质量的排版，因此可适应各种分辨率，它的显示是基于文本的而非图片，因此显示效果更好。这些公式可以被搜索引擎使用，因此公式里的符号一样可以被搜索引擎检索到。 公式插入方法 行间公式：$$ 插入公">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-31T05:07:56.408Z">
+<meta property="og:updated_time" content="2018-03-31T07:03:39.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客撰写">
 <meta name="twitter:description" content="原生hexo并不支持数学公式，需要安装插件 mathJax。mathJax 是一款运行于浏览器中的开源数学符号渲染引擎，使用 mathJax 可以方便的在浏览器中嵌入数学公式。mathJax 使用网络字体产生高质量的排版，因此可适应各种分辨率，它的显示是基于文本的而非图片，因此显示效果更好。这些公式可以被搜索引擎使用，因此公式里的符号一样可以被搜索引擎检索到。 公式插入方法 行间公式：$$ 插入公">
@@ -384,7 +384,7 @@
 </li>
 </ul>
 <h1 id="Hexo-实现博客文件备份"><a href="#Hexo-实现博客文件备份" class="headerlink" title="Hexo 实现博客文件备份"></a>Hexo 实现博客文件备份</h1><p>参考：<a href="http://stevenshi.me/2017/05/07/hexo-backup/" target="_blank" rel="noopener">Hexo 博客备份</a> 实现博客备份，这样就可以方便地使用 WebIDE  在线上进行博客编辑。  </p>
-<h2 id="配置过程中一些用到的操作："><a href="#配置过程中一些用到的操作：" class="headerlink" title="配置过程中一些用到的操作："></a>配置过程中一些用到的操作：</h2><ul>
+<h2 id="配置过程中一些-git-操作："><a href="#配置过程中一些-git-操作：" class="headerlink" title="配置过程中一些 git 操作："></a>配置过程中一些 git 操作：</h2><ul>
 <li>配置 config 指向国内镜像源</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry http://registry.cnpmjs.org</span><br></pre></td></tr></table></figure>
@@ -394,7 +394,11 @@
 <li>解决不同操作系统下换行的冲突，禁用自动换行</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm -rf .git</span><br><span class="line">git config --global core.autocrlf false</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
-<h2 id="git-的一些操作"><a href="#git-的一些操作" class="headerlink" title="git 的一些操作"></a>git 的一些操作</h2><ul>
+<ul>
+<li>配置 .gitignore 没有起作用</li>
+</ul>
+<p>.gitignore 只能忽略那些原来没有被追踪的文件，如果某些文件已经被纳入了版本管理中，则修改 .gitignore 是无效的。这个时候就需要删除缓存改变未被追踪状态，重新提交：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add --all</span><br><span class="line">git commit -m &quot;update .gitignore&quot;</span><br></pre></td></tr></table></figure></p>
+<ul>
 <li>分支操作：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git branch                           #查看本地分支</span><br><span class="line">git branch -r                        #查看远程分支</span><br><span class="line">git branch Workspace                 #创建新分支 </span><br><span class="line">git branch -d Workspace              #切换到 Workspace 分支  </span><br><span class="line">git push origin --delete Hexo  #删除远程分支</span><br></pre></td></tr></table></figure>
@@ -599,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#公式插入方法"><span class="nav-number">1.</span> <span class="nav-text">公式插入方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-实现博客文件备份"><span class="nav-number">2.</span> <span class="nav-text">Hexo 实现博客文件备份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置过程中一些用到的操作："><span class="nav-number">2.1.</span> <span class="nav-text">配置过程中一些用到的操作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-的一些操作"><span class="nav-number">2.2.</span> <span class="nav-text">git 的一些操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异地博客发布流程"><span class="nav-number">2.3.</span> <span class="nav-text">异地博客发布流程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#公式插入方法"><span class="nav-number">1.</span> <span class="nav-text">公式插入方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-实现博客文件备份"><span class="nav-number">2.</span> <span class="nav-text">Hexo 实现博客文件备份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置过程中一些-git-操作："><span class="nav-number">2.1.</span> <span class="nav-text">配置过程中一些 git 操作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异地博客发布流程"><span class="nav-number">2.2.</span> <span class="nav-text">异地博客发布流程</span></a></li></ol></li></ol></div>
             
 
           </div>
