@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="LeNet：MNIST 分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： 1$ CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 数据层数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如减">
+<meta name="description" content="LeNet：MNIST 分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： 1$ CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt 数据层数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如减去">
 <meta name="keywords" content="Caffe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Caffe 学习">
 <meta property="og:url" content="http://yuhangbin.top/2018/03/21/Caffe/index.html">
 <meta property="og:site_name" content="YHangbin的博客">
-<meta property="og:description" content="LeNet：MNIST 分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： 1$ CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 数据层数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如减">
+<meta property="og:description" content="LeNet：MNIST 分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： 1$ CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt 数据层数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如减去">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/1.png">
 <meta property="og:image" content="http://yuhangbin.top/2018/03/21/Caffe/2.jpg">
-<meta property="og:updated_time" content="2018-03-31T05:13:35.661Z">
+<meta property="og:updated_time" content="2018-03-31T05:14:58.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Caffe 学习">
-<meta name="twitter:description" content="LeNet：MNIST 分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： 1$ CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt. 数据层数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如减">
+<meta name="twitter:description" content="LeNet：MNIST 分类模型通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。网络结构定义在路径： 1$ CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt 数据层数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如减去">
 <meta name="twitter:image" content="http://yuhangbin.top/2018/03/21/Caffe/1.png">
 
 
@@ -378,7 +378,7 @@
 
       
         <h1 id="LeNet：MNIST-分类模型"><a href="#LeNet：MNIST-分类模型" class="headerlink" title="LeNet：MNIST 分类模型"></a>LeNet：MNIST 分类模型</h1><p>通常情况下，卷积神经网络包括就卷积层、池化层，然后是两个全连接层，和传统的多层感知机很相似。<br>网络结构定义在路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CAFFE_ROOT/examples/mnist/lenet_train_test.prototxt</span><br></pre></td></tr></table></figure>
 <h2 id="数据层"><a href="#数据层" class="headerlink" title="数据层"></a>数据层</h2><p>数据层是每个模型的最底层，是模型的入口，不仅提供数据的输入，也提供数据从 Blobs 转换成别的格式进行保存输出。通常数据的预处理（如减去均值, 放大缩小, 裁剪和镜像等），也在这一层设置参数实现。数据来源可以来自高效的数据库（如 LevelDB 和 LMDB ），也可以直接来自于内存。如果不是很注重效率的话，数据也可来自磁盘的 HDF5 文件和图片格式文件。数据层定义为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">layer &#123;</span><br><span class="line">  name: &quot;minist&quot;</span><br><span class="line">  type: &quot;Data&quot;</span><br><span class="line">  transform_parm&#123;</span><br><span class="line">    scaale: 0.00390625              #缩放输入像素使其位于 [0,1) 范围内 1/256=0.00390625</span><br><span class="line">  &#125;</span><br><span class="line">  data_parm&#123;</span><br><span class="line">    source: &quot;minist_train_lmdb&quot;     #从给定的 LMDB 存储位置读取数据，还可以设置为 LevelDB</span><br><span class="line">	backend: &quot;LMDB&quot;</span><br><span class="line">	batch_size: 64                  #每次处理数量值为 64 </span><br><span class="line">  &#125;</span><br><span class="line">  top: &quot;data&quot;                       #该层的输出，有两个部分，一部分是标签，一部分是数据值</span><br><span class="line">  top: &quot;label&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>要根据数据来源的不同，对数据层参数进行不同的设置：<br>1、来自数据库，如 LMDB 、LevelDB<br>2、来自内存<br>3、来自 HDF5<br>4、来自图片<br>5、数据来源于Windows，如 txt 文件<br>数据层中其他常用参数的定义：</p>
