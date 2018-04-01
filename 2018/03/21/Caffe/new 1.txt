@@ -1,0 +1,110 @@
+#数据层
+
+layer {
+  name: "minist"
+  type: "Data"
+  transform_parm{
+    scaale: 0.00390625
+  }
+  data_parm{
+    source: "minist_train_lmdb"
+	backend: "LMDB"
+	batch_size: 64
+  }
+  top: "data"
+  top: "label"
+}
+
+
+include {
+  phase: TRAIN
+}
+transform_param {
+  mean_file: "/mean.binaryproto"
+  mirror： 1                           
+  corp_size: 227       
+}
+
+
+
+layer {
+  name: "conv1"
+  type: "Convolution"
+  parm {
+    lr_mult: 1
+  }
+  parm {
+    lr_mult: 2
+  }
+  convolution_parm {
+    num_output: 20
+	kernel_size: 5
+	stride: 1
+	weight_filler {
+	  type: "xavier"
+	}
+	bias_filler {
+	  type: "constant"
+	}
+  }
+  bottom: "data"
+  top: "conv1"
+}
+
+layer {
+  name: "poll1"
+  type: "Polling"
+  polling_parm {
+	kernel_size: 2
+	stride: 2
+	poll: MAX
+	}
+  bottom: "conv1"
+  top: "poll1"
+}
+
+#全连接层
+layer {
+  name: "ip1"
+  type: "InnerProduct"
+  parm {
+	lr_mult: 1
+  }
+  parm {
+	lr_mult: 2
+  }
+  inner_product_parm {
+	num_output: 500
+	weight_filler {
+	  type: "xavier"
+	}
+	bias_filler {
+	  type: "constant"
+	}
+  }
+  bottom: "poll2"
+  top: "ip1"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
